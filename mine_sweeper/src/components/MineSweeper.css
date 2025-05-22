@@ -2,14 +2,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #c0c0c0;
-  border-radius: 8px;
-  border: 3px solid #808080;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  background-color: var(--ms-primary);
+  border-radius: 12px;
+  border: 2px solid var(--ms-border);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   margin: 0 auto;
   max-width: 100%;
-  overflow: auto;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.minesweeper-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 30px -5px rgba(0, 0, 0, 0.4),
+    0 15px 15px -5px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .minesweeper-header {
@@ -17,14 +29,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .minesweeper-header h1 {
-  color: #333;
+  color: var(--text-color);
   margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 24px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.minesweeper-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--kavia-orange);
+  border-radius: 3px;
 }
 
 .controls {
@@ -32,98 +61,237 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .difficulty-selector {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 .difficulty-selector button {
-  padding: 6px 12px;
-  background-color: #e0e0e0;
-  border: 1px solid #808080;
-  border-radius: 4px;
-  font-weight: bold;
+  padding: 8px 16px;
+  background-color: var(--ms-secondary);
+  color: var(--text-color);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  color: #333;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.difficulty-selector button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.difficulty-selector button:hover {
+  background-color: var(--ms-unrevealed);
+  transform: translateY(-2px);
+}
+
+.difficulty-selector button:hover::before {
+  left: 100%;
+}
+
+.difficulty-selector button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .difficulty-selector button.active {
   background-color: var(--kavia-orange);
   color: white;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .restart-button {
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
+  font-size: 28px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e0e0e0;
-  border: 2px solid #808080;
-  border-radius: 4px;
+  background-color: var(--ms-secondary);
+  border: none;
+  border-radius: 50%;
   cursor: pointer;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin-top: 5px;
   padding: 0;
 }
 
+.restart-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 6px 8px rgba(0, 0, 0, 0.25),
+    0 3px 6px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 .restart-button:active {
-  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .game-info {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 18px;
   font-weight: bold;
-  color: #333;
-  padding: 0 10px;
+  color: var(--text-color);
+  padding: 10px 15px;
+  background-color: var(--ms-secondary);
+  border-radius: 8px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.game-info .flag-counter, 
+.game-info .timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.game-info .flag-counter {
+  color: var(--ms-flag);
+}
+
+.game-info .timer {
+  color: var(--text-color);
 }
 
 .board-container {
   overflow: auto;
   max-width: 100%;
-  border: 3px solid #808080;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  background-color: var(--ms-secondary);
+  padding: 8px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .board {
   display: grid;
   gap: 0;
+  background-color: var(--ms-border);
+  padding: 2px;
+  border-radius: 4px;
 }
 
 .game-status {
-  margin-top: 15px;
+  margin-top: 20px;
   height: 30px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
+  position: relative;
+}
+
+.game-status p {
+  margin: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.game-status p.win-message,
+.game-status p.lose-message {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .win-message {
-  color: green;
+  color: var(--ms-win);
+  animation: bounce 1s ease infinite;
 }
 
 .lose-message {
-  color: red;
+  color: var(--ms-lose);
+  animation: shake 0.5s ease;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-5px);
+  }
+  40%, 80% {
+    transform: translateX(5px);
+  }
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .minesweeper-container {
-    padding: 10px;
+    padding: 15px;
+    border-radius: 8px;
   }
   
   .minesweeper-header h1 {
-    font-size: 20px;
+    font-size: 22px;
+  }
+  
+  .difficulty-selector {
+    gap: 8px;
   }
   
   .difficulty-selector button {
-    padding: 4px 8px;
-    font-size: 14px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .restart-button {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+  
+  .game-info {
+    font-size: 16px;
+    padding: 8px 10px;
   }
 }
