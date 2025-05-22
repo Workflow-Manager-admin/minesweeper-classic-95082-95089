@@ -1,9 +1,24 @@
 :root {
   --kavia-orange: #E87A41;
+  --kavia-orange-light: #FF8B4D;
   --kavia-dark: #1A1A1A;
+  --kavia-dark-light: #2a2a2a;
   --text-color: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* MineSweeper specific colors */
+  --ms-primary: #3a4452;
+  --ms-secondary: #4a5568;
+  --ms-unrevealed: #5a6577;
+  --ms-unrevealed-hover: #69768a;
+  --ms-revealed: #e2e8f0;
+  --ms-mine: #f56565;
+  --ms-border: #2d3748;
+  --ms-text: #1a202c;
+  --ms-flag: #ed8936;
+  --ms-win: #48bb78;
+  --ms-lose: #e53e3e;
 }
 
 body {
