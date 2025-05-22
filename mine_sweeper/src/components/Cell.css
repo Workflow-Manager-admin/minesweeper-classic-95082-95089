@@ -1,0 +1,36 @@
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background-color: #c0c0c0;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #7b7b7b;
+}
+
+.cell:hover:not(.revealed) {
+  background-color: #d0d0d0;
+}
+
+.cell.revealed {
+  background-color: #d6d6d6;
+  box-shadow: none;
+}
+
+.cell.mine {
+  background-color: #ff6b6b;
+}
+
+/* Number colors based on classic Minesweeper */
+.cell.value-1 { color: blue; }
+.cell.value-2 { color: green; }
+.cell.value-3 { color: red; }
+.cell.value-4 { color: darkblue; }
+.cell.value-5 { color: darkred; }
+.cell.value-6 { color: teal; }
+.cell.value-7 { color: black; }
+.cell.value-8 { color: gray; }
