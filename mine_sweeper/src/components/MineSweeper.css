@@ -1,0 +1,129 @@
+.minesweeper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #c0c0c0;
+  border-radius: 8px;
+  border: 3px solid #808080;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.minesweeper-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.minesweeper-header h1 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.difficulty-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.difficulty-selector button {
+  padding: 6px 12px;
+  background-color: #e0e0e0;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.difficulty-selector button.active {
+  background-color: var(--kavia-orange);
+  color: white;
+}
+
+.restart-button {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0;
+  border: 2px solid #808080;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+
+.restart-button:active {
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  padding: 0 10px;
+}
+
+.board-container {
+  overflow: auto;
+  max-width: 100%;
+  border: 3px solid #808080;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.board {
+  display: grid;
+  gap: 0;
+}
+
+.game-status {
+  margin-top: 15px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.win-message {
+  color: green;
+}
+
+.lose-message {
+  color: red;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .minesweeper-container {
+    padding: 10px;
+  }
+  
+  .minesweeper-header h1 {
+    font-size: 20px;
+  }
+  
+  .difficulty-selector button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}
