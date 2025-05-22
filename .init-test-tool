@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/minesweeper-classic-95082-95089/mine_sweeper"
+}
